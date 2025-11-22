@@ -1,7 +1,7 @@
-import ae, { forwardRef as re, useRef as V, useImperativeHandle as oe, useEffect as $ } from "react";
+import re, { forwardRef as oe, useRef as V, useImperativeHandle as ce, useEffect as $ } from "react";
 var F = { exports: {} }, R = {};
 var ee;
-function ce() {
+function he() {
   if (ee) return R;
   ee = 1;
   var f = Symbol.for("react.transitional.element"), e = Symbol.for("react.fragment");
@@ -24,12 +24,12 @@ function ce() {
 }
 var _ = {};
 var te;
-function he() {
+function de() {
   return te || (te = 1, process.env.NODE_ENV !== "production" && function() {
     function f(l) {
       if (l == null) return null;
       if (typeof l == "function")
-        return l.$$typeof === ie ? null : l.displayName || l.name || null;
+        return l.$$typeof === ne ? null : l.displayName || l.name || null;
       if (typeof l == "string") return l;
       switch (l) {
         case L:
@@ -53,7 +53,7 @@ function he() {
             return "Portal";
           case k:
             return l.displayName || "Context";
-          case T:
+          case x:
             return (l._context.displayName || "Context") + ".Consumer";
           case b:
             var u = l.render;
@@ -169,7 +169,7 @@ function he() {
       var E = u.children;
       if (E !== void 0)
         if (y)
-          if (ne(E)) {
+          if (le(E)) {
             for (y = 0; y < E.length; y++)
               d(E[y]);
             Object.freeze && Object.freeze(E);
@@ -180,8 +180,8 @@ function he() {
         else d(E);
       if (J.call(u, "key")) {
         E = f(l);
-        var N = Object.keys(u).filter(function(le) {
-          return le !== "key";
+        var N = Object.keys(u).filter(function(ae) {
+          return ae !== "key";
         });
         y = 0 < N.length ? "{key: someKey, " + N.join(": ..., ") + ": ...}" : "{key: someKey}", Q[E + y] || (N = 0 < N.length ? "{" + N.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
@@ -219,7 +219,7 @@ React keys must be passed directly to JSX without using spread:
     function g(l) {
       return typeof l == "object" && l !== null && l.$$typeof === C;
     }
-    var p = ae, C = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), L = Symbol.for("react.fragment"), O = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), T = Symbol.for("react.consumer"), k = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), H = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), M = Symbol.for("react.activity"), ie = Symbol.for("react.client.reference"), j = p.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, ne = Array.isArray, U = console.createTask ? console.createTask : function() {
+    var p = re, C = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), L = Symbol.for("react.fragment"), O = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), x = Symbol.for("react.consumer"), k = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), H = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), M = Symbol.for("react.activity"), ne = Symbol.for("react.client.reference"), j = p.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, le = Array.isArray, U = console.createTask ? console.createTask : function() {
       return null;
     };
     p = {
@@ -255,11 +255,11 @@ React keys must be passed directly to JSX without using spread:
   }()), _;
 }
 var se;
-function de() {
-  return se || (se = 1, process.env.NODE_ENV === "production" ? F.exports = ce() : F.exports = he()), F.exports;
+function ue() {
+  return se || (se = 1, process.env.NODE_ENV === "production" ? F.exports = he() : F.exports = de()), F.exports;
 }
-var ue = de();
-class pe {
+var pe = ue();
+class fe {
   main;
   // Placeholder
   placeholder;
@@ -326,7 +326,7 @@ class pe {
 function z() {
   return Math.random().toString(36).substring(2, 10);
 }
-function fe(f, e) {
+function ie(f, e) {
   function t(i, n) {
     return n && i && i.classList && i.classList.contains(n) || n && i && i.dataset && i.dataset.id && i.dataset.id === e ? i : null;
   }
@@ -369,7 +369,7 @@ class S {
     this.id = !e.id || e.id === "" ? z() : e.id, this.value = e.value === void 0 ? e.text || "" : e.value || "", this.text = e.text || "", this.html = e.html || "", this.defaultSelected = e.defaultSelected !== void 0 ? e.defaultSelected : !1, this.selected = e.selected !== void 0 ? e.selected : !1, this.display = e.display !== void 0 ? e.display : !0, this.disabled = e.disabled !== void 0 ? e.disabled : !1, this.mandatory = e.mandatory !== void 0 ? e.mandatory : !1, this.placeholder = e.placeholder !== void 0 ? e.placeholder : !1, this.class = e.class || "", this.style = e.style || "", this.data = e.data || {};
   }
 }
-class x {
+class T {
   id;
   label;
   selectAll;
@@ -396,7 +396,7 @@ class ge {
       return new Error("Data must be an array");
     for (let t of e)
       if (t)
-        if (t instanceof x || "label" in t) {
+        if (t instanceof T || "label" in t) {
           if (!("label" in t))
             return new Error("Optgroup must have a label");
           if ("options" in t && t.options)
@@ -421,11 +421,11 @@ class ge {
     let t = [];
     return e.forEach((s) => {
       if (s) {
-        if (s instanceof x || "label" in s) {
+        if (s instanceof T || "label" in s) {
           let i = [];
           "options" in s && s.options && s.options.forEach((n) => {
             i.push(new S(n));
-          }), i.length > 0 && t.push(new x(s));
+          }), i.length > 0 && t.push(new T(s));
         }
         (s instanceof S || "text" in s) && t.push(new S(s));
       }
@@ -442,7 +442,7 @@ class ge {
             a = !0;
             break;
           }
-          if (c instanceof x) {
+          if (c instanceof T) {
             for (const h of c.options)
               if (h.id === r.id) {
                 a = !0;
@@ -479,7 +479,7 @@ class ge {
     let s = null, i = !1;
     const n = [];
     for (let a of this.data) {
-      if (a instanceof x)
+      if (a instanceof T)
         for (let c of a.options) {
           s || (s = c);
           let h = c[e] || "";
@@ -502,7 +502,7 @@ class ge {
   }
   getOptgroupByID(e) {
     for (let t of this.data)
-      if (t instanceof x && t.id === e)
+      if (t instanceof T && t.id === e)
         return t;
     return null;
   }
@@ -516,7 +516,7 @@ class ge {
   getFirstOption() {
     let e = null;
     for (let t of this.data)
-      if (t instanceof x ? e = t.options[0] : t instanceof S && (e = t), e)
+      if (t instanceof T ? e = t.options[0] : t instanceof S && (e = t), e)
         break;
     return e;
   }
@@ -529,12 +529,12 @@ class ge {
   filter(e, t) {
     const s = [];
     return this.data.forEach((i) => {
-      if (i instanceof x) {
+      if (i instanceof T) {
         let n = [];
         if (i.options.forEach((a) => {
           (!e || e(a)) && (t ? n.push(new S(a)) : s.push(new S(a)));
         }), n.length > 0) {
-          let a = new x(i);
+          let a = new T(i);
           a.options = n, s.push(a);
         }
       }
@@ -564,6 +564,8 @@ class ve {
   callbacks;
   // Used to compute the range selection
   lastSelectedOption;
+  // Timeout tracking for cleanup
+  closeAnimationTimeout = null;
   // Elements
   main;
   content;
@@ -581,7 +583,7 @@ class ve {
     this.main.main.classList.add(this.classes.disabled), this.main.main.setAttribute("aria-disabled", "true"), this.content.search.input.disabled = !0;
   }
   open() {
-    this.main.arrow.path.setAttribute("d", this.classes.arrowOpen), this.main.main.setAttribute("aria-expanded", "true");
+    this.main.arrow.path.setAttribute("d", this.classes.arrowOpen), this.main.main.setAttribute("aria-expanded", "true"), this.closeAnimationTimeout && (clearTimeout(this.closeAnimationTimeout), this.closeAnimationTimeout = null);
     const t = this.settings.openPosition === "up" ? this.classes.dirAbove : this.classes.dirBelow;
     this.main.main.classList.add(t), this.content.main.classList.add(t), this.content.main.classList.add(this.classes.contentOpen), this.content.search.input.removeAttribute("aria-hidden"), this.moveContent();
     const s = this.store.getSelectedOptions();
@@ -593,8 +595,8 @@ class ve {
   close() {
     this.main.main.setAttribute("aria-expanded", "false"), this.main.arrow.path.setAttribute("d", this.classes.arrowClose), this.content.main.classList.remove(this.classes.contentOpen), this.content.search.input.setAttribute("aria-hidden", "true"), this.main.main.removeAttribute("aria-activedescendant");
     const e = this.getAnimationTiming();
-    setTimeout(() => {
-      this.main.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow);
+    this.closeAnimationTimeout = setTimeout(() => {
+      this.main.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.closeAnimationTimeout = null;
     }, e);
   }
   getAnimationTiming() {
@@ -758,7 +760,7 @@ class ve {
         if (!(this.settings.minSelected && o.length < this.settings.minSelected) && (this.callbacks.beforeChange && (c = this.callbacks.beforeChange(o, h) === !0), c)) {
           let d = [];
           for (const g of o) {
-            if (g instanceof x)
+            if (g instanceof T)
               for (const p of g.options)
                 p.id && d.push(p.id);
             g instanceof S && d.push(g.id);
@@ -951,7 +953,7 @@ class ve {
     ));
     const t = document.createDocumentFragment();
     for (const s of e) {
-      if (s instanceof x) {
+      if (s instanceof T) {
         const i = document.createElement("div");
         i.classList.add(this.classes.optgroup);
         const n = document.createElement("div");
@@ -1042,8 +1044,8 @@ class ve {
         if (s.shiftKey && this.lastSelectedOption) {
           const p = this.store.getDataOptions(), C = p.findIndex((L) => L.id === this.lastSelectedOption.id), m = p.findIndex((L) => L.id === e.id);
           if (C >= 0 && m >= 0) {
-            const L = Math.min(C, m), O = Math.max(C, m), T = p.slice(L, O + 1).filter((k) => !h.find((b) => b.id === k.id));
-            h.length + T.length <= this.settings.maxSelected ? o = h.concat(T) : o = h;
+            const L = Math.min(C, m), O = Math.max(C, m), x = p.slice(L, O + 1).filter((k) => !h.find((b) => b.id === k.id));
+            h.length + x.length <= this.settings.maxSelected ? o = h.concat(x) : o = h;
           } else
             o = h;
         } else a ? (d ? o = h.filter((p) => p.id !== r) : o = h.concat(e), this.lastSelectedOption = e) : (d ? o = h.filter((p) => p.id !== r) : o = h.concat(e), this.lastSelectedOption = e);
@@ -1059,7 +1061,7 @@ class ve {
     }), t;
   }
   destroy() {
-    this.main.main.remove(), this.content.main.remove();
+    this.closeAnimationTimeout && (clearTimeout(this.closeAnimationTimeout), this.closeAnimationTimeout = null), this.main.main.remove(), this.content.main.remove();
   }
   highlightText(e, t, s) {
     const i = t.trim();
@@ -1307,7 +1309,7 @@ class be {
     if (!(!e || e.length === 0)) {
       this.isUpdating = !0, this.pendingOptionsChange = null, this.changeListen(!1), this.select.innerHTML = "";
       for (const t of e)
-        t instanceof x && this.select.appendChild(this.createOptgroup(t)), t instanceof S && this.select.appendChild(this.createOption(t));
+        t instanceof T && this.select.appendChild(this.createOptgroup(t)), t instanceof S && this.select.appendChild(this.createOption(t));
       if (this.select.dispatchEvent(new Event("change", { bubbles: !0 })), this.changeListen(!0), this.isUpdating = !1, this.pendingOptionsChange !== null) {
         const t = this.pendingOptionsChange;
         t.length > 0 && this.onOptionsChange ? (this.pendingOptionsChange = null, this.changeListen(!1), this.onOptionsChange(t), this.changeListen(!0)) : this.pendingOptionsChange = null;
@@ -1345,8 +1347,8 @@ class be {
       if (n.__slimSelectLabelHandler)
         return;
       const r = (a) => {
-        const c = a.target;
-        a.preventDefault(), c === n && this.onLabelClick && this.onLabelClick();
+        const c = a.target, h = ie(c, this.select.dataset.id);
+        a.preventDefault(), !h && this.onLabelClick && this.onLabelClick();
       };
       n.__slimSelectLabelHandler = r, n.addEventListener("click", r, { capture: !0, passive: !1 });
     });
@@ -1446,7 +1448,7 @@ let Se = class {
       e.events && e.events.error && e.events.error(new Error("Element isnt of type select"));
       return;
     }
-    this.selectEl.dataset.ssid && this.destroy(), this.settings = new we(e.settings), this.cssClasses = new pe(e.cssClasses);
+    this.selectEl.dataset.ssid && this.destroy(), this.settings = new we(e.settings), this.cssClasses = new fe(e.cssClasses);
     const t = ["beforeOpen", "afterOpen", "beforeClose", "afterClose"];
     for (const a in e.events)
       e.events.hasOwnProperty(a) && (t.indexOf(a) !== -1 ? this.events[a] = B(e.events[a], 100) : this.events[a] = e.events[a]);
@@ -1526,12 +1528,12 @@ let Se = class {
     this.select.updateOptions(s), this.render.renderValues(), this.render.renderOptions(s), this.events.afterChange && !W(t, this.store.getSelected()) && this.events.afterChange(this.store.getSelectedOptions());
   }
   open() {
-    this.settings.disabled || this.settings.isOpen || (this.events.beforeOpen && this.events.beforeOpen(), this.render.open(), this.settings.showSearch && this.settings.focusSearch && this.render.searchFocus(), this.settings.isOpen = !0, this.openTimeout = setTimeout(() => {
+    this.settings.disabled || this.settings.isOpen || (this.closeTimeout && (clearTimeout(this.closeTimeout), this.closeTimeout = null), this.events.beforeOpen && this.events.beforeOpen(), this.render.open(), this.settings.showSearch && this.settings.focusSearch && this.render.searchFocus(), this.settings.isOpen = !0, this.openTimeout = setTimeout(() => {
       this.events.afterOpen && this.events.afterOpen(), this.settings.isOpen && (this.settings.isFullOpen = !0), document.addEventListener("click", this.documentClick);
     }, this.settings.timeoutDelay), this.settings.contentPosition === "absolute" && (this.settings.intervalMove && clearInterval(this.settings.intervalMove), this.settings.intervalMove = setInterval(this.render.moveContent.bind(this.render), 500)));
   }
   close(e = null) {
-    !this.settings.isOpen || this.settings.alwaysOpen || (this.events.beforeClose && this.events.beforeClose(), this.render.close(), !this.settings.keepSearch && this.render.content.search.input.value !== "" && this.search(""), this.render.mainFocus(e), this.settings.isOpen = !1, this.settings.isFullOpen = !1, this.closeTimeout = setTimeout(() => {
+    !this.settings.isOpen || this.settings.alwaysOpen || (this.openTimeout && (clearTimeout(this.openTimeout), this.openTimeout = null), this.events.beforeClose && this.events.beforeClose(), this.render.close(), !this.settings.keepSearch && this.render.content.search.input.value !== "" && this.search(""), this.render.mainFocus(e), this.settings.isOpen = !1, this.settings.isFullOpen = !1, this.closeTimeout = setTimeout(() => {
       this.events.afterClose && this.events.afterClose(), document.removeEventListener("click", this.documentClick);
     }, this.settings.timeoutDelay), this.settings.intervalMove && clearInterval(this.settings.intervalMove));
   }
@@ -1569,24 +1571,24 @@ let Se = class {
   });
   // Event listener for document click
   documentClick = (e) => {
-    this.settings.isOpen && e.target && !fe(e.target, this.settings.id) && this.close(e.type);
+    this.settings.isOpen && e.target && !ie(e.target, this.settings.id) && this.close(e.type);
   };
   // Event Listener for window visibility change
   windowVisibilityChange = () => {
     document.hidden && this.close();
   };
 };
-const Oe = re(
+const Oe = oe(
   ({ data: f, settings: e, events: t, cssClasses: s, value: i, onChange: n, children: r, multiple: a }, c) => {
     const h = V(null), o = V(null), d = V(!0), g = V(i);
-    oe(c, () => ({
+    ce(c, () => ({
       slimSelect: o.current
     }));
     const p = (m) => typeof m == "string" ? a ? [m] : m : Array.isArray(m) ? a ? m : m[0] : a ? [] : "", C = (m, L = !1) => {
       if (!o.current || m === void 0)
         return;
-      const O = p(m), T = o.current.getData().flatMap((b) => "label" in b ? b.options : [b]);
-      if (!(Array.isArray(O) ? O.length > 0 && O.every((b) => T.some((D) => D.value === b)) : O !== "" && T.some((b) => b.value === O)) && !Array.isArray(O) && !T.some((D) => D.placeholder)) {
+      const O = p(m), x = o.current.getData().flatMap((b) => "label" in b ? b.options : [b]);
+      if (!(Array.isArray(O) ? O.length > 0 && O.every((b) => x.some((D) => D.value === b)) : O !== "" && x.some((b) => b.value === O)) && !Array.isArray(O) && !x.some((D) => D.placeholder)) {
         const D = o.current.getData(), P = {
           value: "",
           text: "",
@@ -1623,12 +1625,12 @@ const Oe = re(
       o.current && i !== void 0 && (g.current = i, C(i, !1));
     }, [i]), $(() => {
       o.current && f && !d.current && (o.current.setData(f), i !== void 0 && C(i, !1));
-    }, [f]), /* @__PURE__ */ ue.jsx("select", { ref: h, multiple: a, children: r });
+    }, [f]), /* @__PURE__ */ pe.jsx("select", { ref: h, multiple: a, children: r });
   }
 );
 Oe.displayName = "SlimSelect";
 export {
-  x as Optgroup,
+  T as Optgroup,
   S as Option,
   we as Settings,
   Oe as default

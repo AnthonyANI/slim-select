@@ -130,6 +130,7 @@ declare class Render {
     store: Store;
     callbacks: Callbacks;
     private lastSelectedOption;
+    private closeAnimationTimeout;
     main: Main;
     content: Content;
     classes: CssClasses;

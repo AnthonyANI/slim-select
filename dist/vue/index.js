@@ -1,5 +1,5 @@
-import { defineComponent as E, createElementBlock as T, openBlock as D, renderSlot as k } from "vue";
-class N {
+import { defineComponent as T, createElementBlock as D, openBlock as k, renderSlot as N } from "vue";
+class M {
   main;
   // Placeholder
   placeholder;
@@ -66,7 +66,7 @@ class N {
 function C() {
   return Math.random().toString(36).substring(2, 10);
 }
-function M(h, e) {
+function A(h, e) {
   function t(i, l) {
     return l && i && i.classList && i.classList.contains(l) || l && i && i.dataset && i.dataset.id && i.dataset.id === e ? i : null;
   }
@@ -304,6 +304,8 @@ class B {
   callbacks;
   // Used to compute the range selection
   lastSelectedOption;
+  // Timeout tracking for cleanup
+  closeAnimationTimeout = null;
   // Elements
   main;
   content;
@@ -321,7 +323,7 @@ class B {
     this.main.main.classList.add(this.classes.disabled), this.main.main.setAttribute("aria-disabled", "true"), this.content.search.input.disabled = !0;
   }
   open() {
-    this.main.arrow.path.setAttribute("d", this.classes.arrowOpen), this.main.main.setAttribute("aria-expanded", "true");
+    this.main.arrow.path.setAttribute("d", this.classes.arrowOpen), this.main.main.setAttribute("aria-expanded", "true"), this.closeAnimationTimeout && (clearTimeout(this.closeAnimationTimeout), this.closeAnimationTimeout = null);
     const t = this.settings.openPosition === "up" ? this.classes.dirAbove : this.classes.dirBelow;
     this.main.main.classList.add(t), this.content.main.classList.add(t), this.content.main.classList.add(this.classes.contentOpen), this.content.search.input.removeAttribute("aria-hidden"), this.moveContent();
     const s = this.store.getSelectedOptions();
@@ -333,8 +335,8 @@ class B {
   close() {
     this.main.main.setAttribute("aria-expanded", "false"), this.main.arrow.path.setAttribute("d", this.classes.arrowClose), this.content.main.classList.remove(this.classes.contentOpen), this.content.search.input.setAttribute("aria-hidden", "true"), this.main.main.removeAttribute("aria-activedescendant");
     const e = this.getAnimationTiming();
-    setTimeout(() => {
-      this.main.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow);
+    this.closeAnimationTimeout = setTimeout(() => {
+      this.main.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove, this.classes.dirBelow), this.closeAnimationTimeout = null;
     }, e);
   }
   getAnimationTiming() {
@@ -782,7 +784,7 @@ class B {
         if (s.shiftKey && this.lastSelectedOption) {
           const u = this.store.getDataOptions(), g = u.findIndex((w) => w.id === this.lastSelectedOption.id), v = u.findIndex((w) => w.id === e.id);
           if (g >= 0 && v >= 0) {
-            const w = Math.min(g, v), S = Math.max(g, v), L = u.slice(w, S + 1).filter((A) => !c.find((x) => x.id === A.id));
+            const w = Math.min(g, v), S = Math.max(g, v), L = u.slice(w, S + 1).filter((E) => !c.find((x) => x.id === E.id));
             c.length + L.length <= this.settings.maxSelected ? r = c.concat(L) : r = c;
           } else
             r = c;
@@ -799,7 +801,7 @@ class B {
     }), t;
   }
   destroy() {
-    this.main.main.remove(), this.content.main.remove();
+    this.closeAnimationTimeout && (clearTimeout(this.closeAnimationTimeout), this.closeAnimationTimeout = null), this.main.main.remove(), this.content.main.remove();
   }
   highlightText(e, t, s) {
     const i = t.trim();
@@ -1085,8 +1087,8 @@ class I {
       if (l.__slimSelectLabelHandler)
         return;
       const n = (a) => {
-        const o = a.target;
-        a.preventDefault(), o === l && this.onLabelClick && this.onLabelClick();
+        const o = a.target, c = A(o, this.select.dataset.id);
+        a.preventDefault(), !c && this.onLabelClick && this.onLabelClick();
       };
       l.__slimSelectLabelHandler = n, l.addEventListener("click", n, { capture: !0, passive: !1 });
     });
@@ -1186,7 +1188,7 @@ let F = class {
       e.events && e.events.error && e.events.error(new Error("Element isnt of type select"));
       return;
     }
-    this.selectEl.dataset.ssid && this.destroy(), this.settings = new H(e.settings), this.cssClasses = new N(e.cssClasses);
+    this.selectEl.dataset.ssid && this.destroy(), this.settings = new H(e.settings), this.cssClasses = new M(e.cssClasses);
     const t = ["beforeOpen", "afterOpen", "beforeClose", "afterClose"];
     for (const a in e.events)
       e.events.hasOwnProperty(a) && (t.indexOf(a) !== -1 ? this.events[a] = O(e.events[a], 100) : this.events[a] = e.events[a]);
@@ -1266,12 +1268,12 @@ let F = class {
     this.select.updateOptions(s), this.render.renderValues(), this.render.renderOptions(s), this.events.afterChange && !y(t, this.store.getSelected()) && this.events.afterChange(this.store.getSelectedOptions());
   }
   open() {
-    this.settings.disabled || this.settings.isOpen || (this.events.beforeOpen && this.events.beforeOpen(), this.render.open(), this.settings.showSearch && this.settings.focusSearch && this.render.searchFocus(), this.settings.isOpen = !0, this.openTimeout = setTimeout(() => {
+    this.settings.disabled || this.settings.isOpen || (this.closeTimeout && (clearTimeout(this.closeTimeout), this.closeTimeout = null), this.events.beforeOpen && this.events.beforeOpen(), this.render.open(), this.settings.showSearch && this.settings.focusSearch && this.render.searchFocus(), this.settings.isOpen = !0, this.openTimeout = setTimeout(() => {
       this.events.afterOpen && this.events.afterOpen(), this.settings.isOpen && (this.settings.isFullOpen = !0), document.addEventListener("click", this.documentClick);
     }, this.settings.timeoutDelay), this.settings.contentPosition === "absolute" && (this.settings.intervalMove && clearInterval(this.settings.intervalMove), this.settings.intervalMove = setInterval(this.render.moveContent.bind(this.render), 500)));
   }
   close(e = null) {
-    !this.settings.isOpen || this.settings.alwaysOpen || (this.events.beforeClose && this.events.beforeClose(), this.render.close(), !this.settings.keepSearch && this.render.content.search.input.value !== "" && this.search(""), this.render.mainFocus(e), this.settings.isOpen = !1, this.settings.isFullOpen = !1, this.closeTimeout = setTimeout(() => {
+    !this.settings.isOpen || this.settings.alwaysOpen || (this.openTimeout && (clearTimeout(this.openTimeout), this.openTimeout = null), this.events.beforeClose && this.events.beforeClose(), this.render.close(), !this.settings.keepSearch && this.render.content.search.input.value !== "" && this.search(""), this.render.mainFocus(e), this.settings.isOpen = !1, this.settings.isFullOpen = !1, this.closeTimeout = setTimeout(() => {
       this.events.afterClose && this.events.afterClose(), document.removeEventListener("click", this.documentClick);
     }, this.settings.timeoutDelay), this.settings.intervalMove && clearInterval(this.settings.intervalMove));
   }
@@ -1309,14 +1311,14 @@ let F = class {
   });
   // Event listener for document click
   documentClick = (e) => {
-    this.settings.isOpen && e.target && !M(e.target, this.settings.id) && this.close(e.type);
+    this.settings.isOpen && e.target && !A(e.target, this.settings.id) && this.close(e.type);
   };
   // Event Listener for window visibility change
   windowVisibilityChange = () => {
     document.hidden && this.close();
   };
 };
-const R = E({
+const R = T({
   name: "SlimSelect",
   props: {
     modelValue: {
@@ -1427,11 +1429,11 @@ const R = E({
   return t;
 }, $ = ["multiple"];
 function q(h, e, t, s, i, l) {
-  return D(), T("select", {
+  return k(), D("select", {
     multiple: h.multiple,
     ref: "slim"
   }, [
-    k(h.$slots, "default")
+    N(h.$slots, "default")
   ], 8, $);
 }
 const z = /* @__PURE__ */ _(R, [["render", q]]);
