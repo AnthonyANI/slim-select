@@ -722,20 +722,20 @@ class B {
             g.preventDefault(), g.stopPropagation();
             const v = this.store.getSelected();
             if (c) {
-              const w = v.filter((S) => {
+              const S = v.filter((w) => {
                 for (const b of s.options)
-                  if (S === b.id)
+                  if (w === b.id)
                     return !1;
                 return !0;
               });
-              this.callbacks.setSelected(w, !0);
+              this.callbacks.setSelected(S, !0);
               return;
             } else {
-              let w = s.options.map((b) => b.id).filter((b) => b !== void 0);
-              const S = v.concat(w);
+              let S = s.options.map((b) => b.id).filter((b) => b !== void 0);
+              const w = v.concat(S);
               for (const b of s.options)
                 b.id && !this.store.getOptionByID(b.id) && this.callbacks.addOption(new p(b));
-              this.callbacks.setSelected(S, !0);
+              this.callbacks.setSelected(w, !0);
               return;
             }
           }), a.appendChild(o);
@@ -782,9 +782,9 @@ class B {
       if (this.settings.isMultiple) {
         const d = c.some((u) => u.id === n);
         if (s.shiftKey && this.lastSelectedOption) {
-          const u = this.store.getDataOptions(), g = u.findIndex((w) => w.id === this.lastSelectedOption.id), v = u.findIndex((w) => w.id === e.id);
+          const u = this.store.getDataOptions(), g = u.findIndex((S) => S.id === this.lastSelectedOption.id), v = u.findIndex((S) => S.id === e.id);
           if (g >= 0 && v >= 0) {
-            const w = Math.min(g, v), S = Math.max(g, v), L = u.slice(w, S + 1).filter((E) => !c.find((x) => x.id === E.id));
+            const S = Math.min(g, v), w = Math.max(g, v), L = u.slice(S, w + 1).filter((E) => !c.find((x) => x.id === E.id));
             c.length + L.length <= this.settings.maxSelected ? r = c.concat(L) : r = c;
           } else
             r = c;
@@ -825,16 +825,32 @@ class B {
     };
     return Array.from(n.childNodes).forEach((o) => a(o)), n.innerHTML;
   }
+  setContentDirection(e) {
+    const t = e === "above", s = t ? this.classes.dirAbove : this.classes.dirBelow, i = t ? this.classes.dirBelow : this.classes.dirAbove;
+    if (this.main.main.classList.remove(i), this.main.main.classList.add(s), this.content.main.classList.remove(i), this.content.main.classList.add(s), t) {
+      const l = this.main.main.offsetHeight, n = this.content.main.offsetHeight;
+      this.content.main.style.margin = "-" + (l + n - 1) + "px 0px 0px 0px";
+    } else
+      this.content.main.style.margin = "-1px 0px 0px 0px";
+  }
+  setContentPosition() {
+    if (this.settings.contentPosition === "relative")
+      return;
+    const e = this.main.main.getBoundingClientRect();
+    let t, s;
+    if (this.settings.contentPosition === "fixed")
+      t = e.top + e.height, s = e.left;
+    else {
+      const i = this.content.main.offsetParent, l = i ? i.getBoundingClientRect() : { top: 0, left: 0 };
+      t = e.top - l.top + e.height - (i?.clientTop || 0), s = e.left - l.left - (i?.clientLeft || 0);
+    }
+    this.content.main.style.top = t + "px", this.content.main.style.left = s + "px", this.content.main.style.width = e.width + "px";
+  }
   moveContentAbove() {
-    const e = this.main.main.offsetHeight, t = this.content.main.offsetHeight;
-    this.main.main.classList.remove(this.classes.dirBelow), this.main.main.classList.add(this.classes.dirAbove), this.content.main.classList.remove(this.classes.dirBelow), this.content.main.classList.add(this.classes.dirAbove);
-    const s = this.main.main.getBoundingClientRect();
-    this.content.main.style.margin = "-" + (e + t - 1) + "px 0px 0px 0px", this.content.main.style.top = s.top + s.height + (this.settings.contentPosition === "fixed" ? 0 : window.scrollY) + "px", this.content.main.style.left = s.left + (this.settings.contentPosition === "fixed" ? 0 : window.scrollX) + "px", this.content.main.style.width = s.width + "px";
+    this.setContentDirection("above"), this.setContentPosition();
   }
   moveContentBelow() {
-    this.main.main.classList.remove(this.classes.dirAbove), this.main.main.classList.add(this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove), this.content.main.classList.add(this.classes.dirBelow);
-    const e = this.main.main.getBoundingClientRect();
-    this.content.main.style.margin = "-1px 0px 0px 0px", this.settings.contentPosition !== "relative" && (this.content.main.style.top = e.top + e.height + (this.settings.contentPosition === "fixed" ? 0 : window.scrollY) + "px", this.content.main.style.left = e.left + (this.settings.contentPosition === "fixed" ? 0 : window.scrollX) + "px", this.content.main.style.width = e.width + "px");
+    this.setContentDirection("below"), this.setContentPosition();
   }
   ensureElementInView(e, t) {
     const s = e.scrollTop + e.offsetTop, i = s + e.clientHeight, l = t.offsetTop, n = l + t.clientHeight;

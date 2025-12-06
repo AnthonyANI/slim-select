@@ -1,10 +1,10 @@
-import re, { forwardRef as oe, useRef as V, useImperativeHandle as ce, useEffect as $ } from "react";
+import re, { forwardRef as oe, useRef as V, useImperativeHandle as ce, useEffect as Y } from "react";
 var F = { exports: {} }, R = {};
 var ee;
 function he() {
   if (ee) return R;
   ee = 1;
-  var f = Symbol.for("react.transitional.element"), e = Symbol.for("react.fragment");
+  var p = Symbol.for("react.transitional.element"), e = Symbol.for("react.fragment");
   function t(s, i, n) {
     var r = null;
     if (n !== void 0 && (r = "" + n), i.key !== void 0 && (r = "" + i.key), "key" in i) {
@@ -13,7 +13,7 @@ function he() {
         a !== "key" && (n[a] = i[a]);
     } else n = i;
     return i = n.ref, {
-      $$typeof: f,
+      $$typeof: p,
       type: s,
       key: r,
       ref: i !== void 0 ? i : null,
@@ -26,7 +26,7 @@ var _ = {};
 var te;
 function de() {
   return te || (te = 1, process.env.NODE_ENV !== "production" && function() {
-    function f(l) {
+    function p(l) {
       if (l == null) return null;
       if (typeof l == "function")
         return l.$$typeof === ne ? null : l.displayName || l.name || null;
@@ -58,12 +58,12 @@ function de() {
           case b:
             var u = l.render;
             return l = l.displayName, l || (l = u.displayName || u.name || "", l = l !== "" ? "ForwardRef(" + l + ")" : "ForwardRef"), l;
-          case H:
-            return u = l.displayName || null, u !== null ? u : f(l.type) || "Memo";
+          case B:
+            return u = l.displayName || null, u !== null ? u : p(l.type) || "Memo";
           case A:
             u = l._payload, l = l._init;
             try {
-              return f(l(u));
+              return p(l(u));
             } catch {
             }
         }
@@ -94,7 +94,7 @@ function de() {
       if (typeof l == "object" && l !== null && l.$$typeof === A)
         return "<...>";
       try {
-        var u = f(l);
+        var u = p(l);
         return u ? "<" + u + ">" : "<...>";
       } catch {
         return "<...>";
@@ -127,7 +127,7 @@ function de() {
       });
     }
     function c() {
-      var l = f(this.type);
+      var l = p(this.type);
       return X[l] || (X[l] = !0, console.error(
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), l = this.props.ref, l !== void 0 ? l : null;
@@ -179,7 +179,7 @@ function de() {
             );
         else d(E);
       if (J.call(u, "key")) {
-        E = f(l);
+        E = p(l);
         var N = Object.keys(u).filter(function(ae) {
           return ae !== "key";
         });
@@ -198,8 +198,8 @@ React keys must be passed directly to JSX without using spread:
       }
       if (E = null, w !== void 0 && (t(w), E = "" + w), r(u) && (t(u.key), E = "" + u.key), "key" in u) {
         w = {};
-        for (var Y in u)
-          Y !== "key" && (w[Y] = u[Y]);
+        for (var $ in u)
+          $ !== "key" && (w[$] = u[$]);
       } else w = u;
       return E && a(
         w,
@@ -219,16 +219,16 @@ React keys must be passed directly to JSX without using spread:
     function g(l) {
       return typeof l == "object" && l !== null && l.$$typeof === C;
     }
-    var p = re, C = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), L = Symbol.for("react.fragment"), O = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), x = Symbol.for("react.consumer"), k = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), H = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), M = Symbol.for("react.activity"), ne = Symbol.for("react.client.reference"), j = p.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, le = Array.isArray, U = console.createTask ? console.createTask : function() {
+    var f = re, C = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), L = Symbol.for("react.fragment"), O = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), x = Symbol.for("react.consumer"), k = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), B = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), M = Symbol.for("react.activity"), ne = Symbol.for("react.client.reference"), j = f.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, le = Array.isArray, U = console.createTask ? console.createTask : function() {
       return null;
     };
-    p = {
+    f = {
       react_stack_bottom_frame: function(l) {
         return l();
       }
     };
-    var G, X = {}, K = p.react_stack_bottom_frame.bind(
-      p,
+    var G, X = {}, K = f.react_stack_bottom_frame.bind(
+      f,
       n
     )(), Z = U(s(n)), Q = {};
     _.Fragment = L, _.jsx = function(l, u, w) {
@@ -258,8 +258,8 @@ var se;
 function ue() {
   return se || (se = 1, process.env.NODE_ENV === "production" ? F.exports = he() : F.exports = de()), F.exports;
 }
-var pe = ue();
-class fe {
+var fe = ue();
+class pe {
   main;
   // Placeholder
   placeholder;
@@ -326,30 +326,30 @@ class fe {
 function z() {
   return Math.random().toString(36).substring(2, 10);
 }
-function ie(f, e) {
+function ie(p, e) {
   function t(i, n) {
     return n && i && i.classList && i.classList.contains(n) || n && i && i.dataset && i.dataset.id && i.dataset.id === e ? i : null;
   }
   function s(i, n) {
     return !i || i === document ? null : t(i, n) ? i : s(i.parentNode, n);
   }
-  return t(f, e) || s(f, e);
+  return t(p, e) || s(p, e);
 }
-function B(f, e = 50, t = !1) {
+function H(p, e = 50, t = !1) {
   let s;
   return function(...i) {
     const n = self, r = () => {
-      s = null, t || f.apply(n, i);
+      s = null, t || p.apply(n, i);
     }, a = t && !s;
-    clearTimeout(s), s = setTimeout(r, e), a && f.apply(n, i);
+    clearTimeout(s), s = setTimeout(r, e), a && p.apply(n, i);
   };
 }
-function W(f, e) {
-  return JSON.stringify(f) === JSON.stringify(e);
+function W(p, e) {
+  return JSON.stringify(p) === JSON.stringify(e);
 }
-function me(f) {
-  const e = f.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, (t) => "-" + t.toLowerCase());
-  return f[0] === f[0].toUpperCase() ? e.substring(1) : e;
+function me(p) {
+  const e = p.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, (t) => "-" + t.toLowerCase());
+  return p[0] === p[0].toUpperCase() ? e.substring(1) : e;
 }
 class S {
   id;
@@ -655,7 +655,7 @@ class ve {
         if (this.settings.isMultiple)
           this.callbacks.setSelected([], !1), this.updateDeselectAll();
         else {
-          const p = this.store.getFirstOption(), C = p ? p.id : "";
+          const f = this.store.getFirstOption(), C = f ? f.id : "";
           this.callbacks.setSelected(C, !1);
         }
         this.settings.closeOnSelect && this.callbacks.close(), this.callbacks.afterChange && this.callbacks.afterChange(this.store.getSelectedOptions());
@@ -761,8 +761,8 @@ class ve {
           let d = [];
           for (const g of o) {
             if (g instanceof T)
-              for (const p of g.options)
-                p.id && d.push(p.id);
+              for (const f of g.options)
+                f.id && d.push(f.id);
             g instanceof S && d.push(g.id);
           }
           this.callbacks.setSelected(d, !1), this.settings.closeOnSelect && this.callbacks.close(), this.callbacks.afterChange && this.callbacks.afterChange(o), this.updateDeselectAll();
@@ -810,7 +810,7 @@ class ve {
       main: e,
       input: t
     };
-    if (this.settings.showSearch || (e.classList.add(this.classes.hide), t.readOnly = !0), t.type = "search", t.placeholder = this.settings.searchPlaceholder, t.tabIndex = -1, t.setAttribute("aria-label", this.settings.searchPlaceholder), t.setAttribute("aria-autocomplete", "list"), t.setAttribute("autocapitalize", "off"), t.setAttribute("autocomplete", "off"), t.setAttribute("autocorrect", "off"), t.setAttribute("aria-hidden", "true"), t.oninput = B((n) => {
+    if (this.settings.showSearch || (e.classList.add(this.classes.hide), t.readOnly = !0), t.type = "search", t.placeholder = this.settings.searchPlaceholder, t.tabIndex = -1, t.setAttribute("aria-label", this.settings.searchPlaceholder), t.setAttribute("aria-autocomplete", "list"), t.setAttribute("autocapitalize", "off"), t.setAttribute("autocomplete", "off"), t.setAttribute("autocorrect", "off"), t.setAttribute("aria-hidden", "true"), t.oninput = H((n) => {
       this.callbacks.search(n.target.value);
     }, 100), t.onkeydown = (n) => {
       switch (n.key) {
@@ -846,8 +846,8 @@ class ve {
         const h = (d) => {
           let g = new S(d);
           if (this.callbacks.addOption(g), this.settings.isMultiple) {
-            let p = this.store.getSelected();
-            p.push(g.id), this.callbacks.setSelected(p, !0);
+            let f = this.store.getSelected();
+            f.push(g.id), this.callbacks.setSelected(f, !0);
           } else
             this.callbacks.setSelected([g.id], !0);
           this.callbacks.search(""), this.settings.closeOnSelect && setTimeout(() => {
@@ -977,8 +977,8 @@ class ve {
           d.setAttribute("viewBox", "0 0 100 100"), c.appendChild(d);
           const g = document.createElementNS("http://www.w3.org/2000/svg", "path");
           g.setAttribute("d", this.classes.optgroupSelectAllBox), d.appendChild(g);
-          const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-          p.setAttribute("d", this.classes.optgroupSelectAllCheck), d.appendChild(p), c.addEventListener("click", (C) => {
+          const f = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          f.setAttribute("d", this.classes.optgroupSelectAllCheck), d.appendChild(f), c.addEventListener("click", (C) => {
             C.preventDefault(), C.stopPropagation();
             const m = this.store.getSelected();
             if (h) {
@@ -1040,19 +1040,19 @@ class ve {
       const h = this.store.getSelectedOptions();
       let o = [];
       if (this.settings.isMultiple) {
-        const d = h.some((p) => p.id === r);
+        const d = h.some((f) => f.id === r);
         if (s.shiftKey && this.lastSelectedOption) {
-          const p = this.store.getDataOptions(), C = p.findIndex((L) => L.id === this.lastSelectedOption.id), m = p.findIndex((L) => L.id === e.id);
+          const f = this.store.getDataOptions(), C = f.findIndex((L) => L.id === this.lastSelectedOption.id), m = f.findIndex((L) => L.id === e.id);
           if (C >= 0 && m >= 0) {
-            const L = Math.min(C, m), O = Math.max(C, m), x = p.slice(L, O + 1).filter((k) => !h.find((b) => b.id === k.id));
+            const L = Math.min(C, m), O = Math.max(C, m), x = f.slice(L, O + 1).filter((k) => !h.find((b) => b.id === k.id));
             h.length + x.length <= this.settings.maxSelected ? o = h.concat(x) : o = h;
           } else
             o = h;
-        } else a ? (d ? o = h.filter((p) => p.id !== r) : o = h.concat(e), this.lastSelectedOption = e) : (d ? o = h.filter((p) => p.id !== r) : o = h.concat(e), this.lastSelectedOption = e);
+        } else a ? (d ? o = h.filter((f) => f.id !== r) : o = h.concat(e), this.lastSelectedOption = e) : (d ? o = h.filter((f) => f.id !== r) : o = h.concat(e), this.lastSelectedOption = e);
       }
       if (this.settings.isMultiple || (e.selected ? o = [] : o = [e]), this.callbacks.beforeChange || (c = !0), this.callbacks.beforeChange && (this.callbacks.beforeChange(o, h) === !1 ? c = !1 : c = !0), c) {
         this.store.getOptionByID(r) || this.callbacks.addOption(e), this.callbacks.setSelected(
-          o.map((p) => p.id),
+          o.map((f) => f.id),
           !1
         );
         const d = s.ctrlKey || s.metaKey || s.shiftKey;
@@ -1074,27 +1074,43 @@ class ve {
         const h = c.textContent || "", o = new RegExp("(" + n + ")", "i");
         if (o.test(h)) {
           const d = document.createElement("span");
-          h.split(o).forEach((p, C) => {
-            if (p && o.test(p)) {
+          h.split(o).forEach((f, C) => {
+            if (f && o.test(f)) {
               const m = document.createElement("mark");
-              m.className = s, m.textContent = p, d.appendChild(m);
-            } else p && d.appendChild(document.createTextNode(p));
+              m.className = s, m.textContent = f, d.appendChild(m);
+            } else f && d.appendChild(document.createTextNode(f));
           }), c.parentNode?.replaceChild(d, c);
         }
       } else c.nodeType === Node.ELEMENT_NODE && Array.from(c.childNodes).forEach((h) => a(h));
     };
     return Array.from(r.childNodes).forEach((c) => a(c)), r.innerHTML;
   }
+  setContentDirection(e) {
+    const t = e === "above", s = t ? this.classes.dirAbove : this.classes.dirBelow, i = t ? this.classes.dirBelow : this.classes.dirAbove;
+    if (this.main.main.classList.remove(i), this.main.main.classList.add(s), this.content.main.classList.remove(i), this.content.main.classList.add(s), t) {
+      const n = this.main.main.offsetHeight, r = this.content.main.offsetHeight;
+      this.content.main.style.margin = "-" + (n + r - 1) + "px 0px 0px 0px";
+    } else
+      this.content.main.style.margin = "-1px 0px 0px 0px";
+  }
+  setContentPosition() {
+    if (this.settings.contentPosition === "relative")
+      return;
+    const e = this.main.main.getBoundingClientRect();
+    let t, s;
+    if (this.settings.contentPosition === "fixed")
+      t = e.top + e.height, s = e.left;
+    else {
+      const i = this.content.main.offsetParent, n = i ? i.getBoundingClientRect() : { top: 0, left: 0 };
+      t = e.top - n.top + e.height - (i?.clientTop || 0), s = e.left - n.left - (i?.clientLeft || 0);
+    }
+    this.content.main.style.top = t + "px", this.content.main.style.left = s + "px", this.content.main.style.width = e.width + "px";
+  }
   moveContentAbove() {
-    const e = this.main.main.offsetHeight, t = this.content.main.offsetHeight;
-    this.main.main.classList.remove(this.classes.dirBelow), this.main.main.classList.add(this.classes.dirAbove), this.content.main.classList.remove(this.classes.dirBelow), this.content.main.classList.add(this.classes.dirAbove);
-    const s = this.main.main.getBoundingClientRect();
-    this.content.main.style.margin = "-" + (e + t - 1) + "px 0px 0px 0px", this.content.main.style.top = s.top + s.height + (this.settings.contentPosition === "fixed" ? 0 : window.scrollY) + "px", this.content.main.style.left = s.left + (this.settings.contentPosition === "fixed" ? 0 : window.scrollX) + "px", this.content.main.style.width = s.width + "px";
+    this.setContentDirection("above"), this.setContentPosition();
   }
   moveContentBelow() {
-    this.main.main.classList.remove(this.classes.dirAbove), this.main.main.classList.add(this.classes.dirBelow), this.content.main.classList.remove(this.classes.dirAbove), this.content.main.classList.add(this.classes.dirBelow);
-    const e = this.main.main.getBoundingClientRect();
-    this.content.main.style.margin = "-1px 0px 0px 0px", this.settings.contentPosition !== "relative" && (this.content.main.style.top = e.top + e.height + (this.settings.contentPosition === "fixed" ? 0 : window.scrollY) + "px", this.content.main.style.left = e.left + (this.settings.contentPosition === "fixed" ? 0 : window.scrollX) + "px", this.content.main.style.width = e.width + "px");
+    this.setContentDirection("below"), this.setContentPosition();
   }
   ensureElementInView(e, t) {
     const s = e.scrollTop + e.offsetTop, i = s + e.clientHeight, n = t.offsetTop, r = n + t.clientHeight;
@@ -1448,10 +1464,10 @@ let Se = class {
       e.events && e.events.error && e.events.error(new Error("Element isnt of type select"));
       return;
     }
-    this.selectEl.dataset.ssid && this.destroy(), this.settings = new we(e.settings), this.cssClasses = new fe(e.cssClasses);
+    this.selectEl.dataset.ssid && this.destroy(), this.settings = new we(e.settings), this.cssClasses = new pe(e.cssClasses);
     const t = ["beforeOpen", "afterOpen", "beforeClose", "afterClose"];
     for (const a in e.events)
-      e.events.hasOwnProperty(a) && (t.indexOf(a) !== -1 ? this.events[a] = B(e.events[a], 100) : this.events[a] = e.events[a]);
+      e.events.hasOwnProperty(a) && (t.indexOf(a) !== -1 ? this.events[a] = H(e.events[a], 100) : this.events[a] = e.events[a]);
     this.settings.disabled = e.settings?.disabled ? e.settings.disabled : this.selectEl.disabled, this.settings.isMultiple = this.selectEl.multiple, this.settings.style = this.selectEl.style.cssText, this.settings.class = this.selectEl.className.split(" "), this.select = new be(this.selectEl), this.selectEl.id || (this.selectEl.id = this.settings.id), this.select.updateSelect(this.settings.id, this.settings.style, this.settings.class), this.select.hideUI(), this.select.onValueChange = (a) => {
       this.setSelected(a.map((c) => c.id));
     }, this.select.onClassChange = (a) => {
@@ -1562,11 +1578,11 @@ let Se = class {
   destroy() {
     this.openTimeout && (clearTimeout(this.openTimeout), this.openTimeout = null), this.closeTimeout && (clearTimeout(this.closeTimeout), this.closeTimeout = null), this.settings.intervalMove && (clearInterval(this.settings.intervalMove), this.settings.intervalMove = null), document.removeEventListener("click", this.documentClick), window.removeEventListener("resize", this.windowResize, !1), this.settings.openPosition === "auto" && window.removeEventListener("scroll", this.windowScroll, !1), document.removeEventListener("visibilitychange", this.windowVisibilityChange), this.store.setData([]), this.render.destroy(), this.select.destroy();
   }
-  windowResize = B(() => {
+  windowResize = H(() => {
     !this.settings.isOpen && !this.settings.isFullOpen || this.render.moveContent();
   });
   // Event listener for window scrolling
-  windowScroll = B(() => {
+  windowScroll = H(() => {
     !this.settings.isOpen && !this.settings.isFullOpen || this.render.moveContent();
   });
   // Event listener for document click
@@ -1579,15 +1595,15 @@ let Se = class {
   };
 };
 const Oe = oe(
-  ({ data: f, settings: e, events: t, cssClasses: s, value: i, onChange: n, children: r, multiple: a }, c) => {
+  ({ data: p, settings: e, events: t, cssClasses: s, value: i, onChange: n, children: r, multiple: a }, c) => {
     const h = V(null), o = V(null), d = V(!0), g = V(i);
     ce(c, () => ({
       slimSelect: o.current
     }));
-    const p = (m) => typeof m == "string" ? a ? [m] : m : Array.isArray(m) ? a ? m : m[0] : a ? [] : "", C = (m, L = !1) => {
+    const f = (m) => typeof m == "string" ? a ? [m] : m : Array.isArray(m) ? a ? m : m[0] : a ? [] : "", C = (m, L = !1) => {
       if (!o.current || m === void 0)
         return;
-      const O = p(m), x = o.current.getData().flatMap((b) => "label" in b ? b.options : [b]);
+      const O = f(m), x = o.current.getData().flatMap((b) => "label" in b ? b.options : [b]);
       if (!(Array.isArray(O) ? O.length > 0 && O.every((b) => x.some((D) => D.value === b)) : O !== "" && x.some((b) => b.value === O)) && !Array.isArray(O) && !x.some((D) => D.placeholder)) {
         const D = o.current.getData(), P = {
           value: "",
@@ -1598,12 +1614,12 @@ const Oe = oe(
       }
       o.current.setSelected(O, L);
     };
-    return $(() => {
+    return Y(() => {
       if (!h.current) return;
       const m = {
         select: h.current
       };
-      f && (m.data = f), e && (m.settings = e), s && (m.cssClasses = s);
+      p && (m.data = p), e && (m.settings = e), s && (m.cssClasses = s);
       const L = t?.afterChange;
       return m.events = {
         ...t,
@@ -1611,21 +1627,21 @@ const Oe = oe(
           if (!o.current) return;
           const v = a ? O.map((A) => A.value) : O[0]?.value ?? "", k = o.current.getData().flatMap(
             (A) => "label" in A ? A.options : [A]
-          ), b = g.current, D = b === void 0 ? !1 : Array.isArray(b) ? b.length > 0 && b.every((A) => k.some((M) => M.value === A)) : b !== "" && k.some((A) => A.value === b), P = Array.isArray(v) ? v.length > 0 && v.every((A) => k.some((M) => M.value === A)) : v !== "" && k.some((A) => A.value === v), H = Array.isArray(v) && Array.isArray(b) ? JSON.stringify(v.sort()) !== JSON.stringify(b.sort()) : b !== v;
-          n && H && (D || P) && (n(v), g.current = v), L && L(O);
+          ), b = g.current, D = b === void 0 ? !1 : Array.isArray(b) ? b.length > 0 && b.every((A) => k.some((M) => M.value === A)) : b !== "" && k.some((A) => A.value === b), P = Array.isArray(v) ? v.length > 0 && v.every((A) => k.some((M) => M.value === A)) : v !== "" && k.some((A) => A.value === v), B = Array.isArray(v) && Array.isArray(b) ? JSON.stringify(v.sort()) !== JSON.stringify(b.sort()) : b !== v;
+          n && B && (D || P) && (n(v), g.current = v), L && L(O);
         }
       }, o.current = new Se(m), i !== void 0 && C(i, !1), () => {
         o.current && (o.current.destroy(), o.current = null);
       };
-    }, []), $(() => {
+    }, []), Y(() => {
       if (d.current) {
         d.current = !1, g.current = i;
         return;
       }
       o.current && i !== void 0 && (g.current = i, C(i, !1));
-    }, [i]), $(() => {
-      o.current && f && !d.current && (o.current.setData(f), i !== void 0 && C(i, !1));
-    }, [f]), /* @__PURE__ */ pe.jsx("select", { ref: h, multiple: a, children: r });
+    }, [i]), Y(() => {
+      o.current && p && !d.current && (o.current.setData(p), i !== void 0 && C(i, !1));
+    }, [p]), /* @__PURE__ */ fe.jsx("select", { ref: h, multiple: a, children: r });
   }
 );
 Oe.displayName = "SlimSelect";

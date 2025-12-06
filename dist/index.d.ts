@@ -162,6 +162,8 @@ declare class Render {
     option(option: Option_2): HTMLDivElement;
     destroy(): void;
     private highlightText;
+    private setContentDirection;
+    private setContentPosition;
     moveContentAbove(): void;
     moveContentBelow(): void;
     ensureElementInView(container: HTMLElement, element: HTMLElement): void;
